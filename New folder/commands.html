@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Commands</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#8b0000;
+font-family:Georgia, serif;
+color:white;
+text-align:center;
+}
+
+/* Welcome */
+
+#welcome{
+font-family:'Great Vibes',cursive;
+font-size:64px;
+color:gold;
+margin-top:60px;
+opacity:0;
+animation:welcome 5s forwards;
+}
+
+@keyframes welcome{
+0%{opacity:0}
+20%{opacity:1}
+80%{opacity:1}
+100%{opacity:0}
+}
+
+/* Intro text */
+
+#obedient{
+font-size:28px;
+margin-top:20px;
+opacity:0;
+animation:obedient 4s forwards;
+animation-delay:5s;
+}
+
+@keyframes obedient{
+0%{opacity:0}
+25%{opacity:1}
+75%{opacity:1}
+100%{opacity:0}
+}
+
+/* Permanent message */
+
+#note{
+
+position:absolute;
+top:25px;
+width:100%;
+
+font-family:'Great Vibes',cursive;
+font-size:34px;
+
+color:gold;
+
+opacity:0;
+
+animation:noteFade 2s forwards;
+animation-delay:14s;
+
+}
+
+@keyframes noteFade{
+0%{opacity:0}
+100%{opacity:1}
+}
+
+/* Character */
+
+.character{
+margin-top:10px;
+opacity:0;
+animation:showCharacter 1s forwards;
+animation-delay:9s;
+}
+
+@keyframes showCharacter{
+to{opacity:1}
+}
+
+#character{
+width:380px;
+transition:opacity .35s;
+}
+
+/* Chat bubble */
+
+.chat{
+width:240px;
+margin:0 auto 10px auto;
+opacity:0;
+position:relative;
+}
+
+.chat img{
+width:100%;
+}
+
+.chatText{
+
+position:absolute;
+top:38%;
+left:50%;
+transform:translate(-50%,-50%);
+
+width:170px;
+text-align:center;
+
+font-size:16px;
+color:white;
+
+}
+
+/* Commands */
+
+.commands{
+
+margin-top:25px;
+
+display:flex;
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:14px;
+
+opacity:0;
+animation:showCommands 1s forwards;
+animation-delay:14s;
+
+}
+
+@keyframes showCommands{
+to{opacity:1}
+}
+
+button{
+
+padding:12px 20px;
+font-size:15px;
+
+background:#5a0000;
+color:white;
+
+border:none;
+border-radius:8px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+button:hover{
+background:#3a0000;
+transform:scale(1.05);
+}
+
+/* NEXT PAGE BUTTON */
+
+#nextPage{
+
+position:fixed;
+right:40px;
+top:50%;
+transform:translateY(-50%);
+
+font-family:'Great Vibes',cursive;
+font-size:28px;
+font-weight:bold;
+
+padding:16px 28px;
+
+background:gold;
+color:#8b0000;
+
+border:none;
+border-radius:12px;
+
+cursor:pointer;
+
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+
+opacity:0;
+
+transition:.6s;
+
+}
+
+#nextPage.show{
+opacity:1;
+}
+
+#nextPage:hover{
+transform:translateY(-50%) scale(1.1);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="welcome">Welcome Mistress D</div>
+
+<div id="obedient">
+A virtual representation of how obedient i am 😋
+</div>
+
+<div id="note">
+These are just a few commands, I will follow every other command you give with the same obedience.
+</div>
+
+<div class="character">
+
+<div id="bubble" class="chat">
+
+<img src="chat.png">
+
+<div id="bubbleText" class="chatText">
+How may i serve you today Mistress?
+</div>
+
+</div>
+
+<img id="character" src="Standing.png">
+
+</div>
+
+<div class="commands">
+
+<button onclick="doCommand('Standing.png')">Stand</button>
+<button onclick="doCommand('kneel.png')">Kneel</button>
+<button onclick="doCommand('bow.png')">Bow</button>
+<button onclick="doCommand('bark.png','bark')">Bark</button>
+<button onclick="doCommand('kiss.png')">Kiss my shoe</button>
+<button onclick="doCommand('massage.png')">Massage my feet</button>
+<button onclick="doCommand('coffee.png')">Bring me coffee</button>
+
+</div>
+
+<button id="nextPage" onclick="goNext()">
+This way Queen
+</button>
+
+<script>
+
+/* Initial chat bubble */
+
+setTimeout(()=>{
+
+let bubble=document.getElementById("bubble")
+
+bubble.style.opacity=1
+
+setTimeout(()=>{
+bubble.style.opacity=0
+},3000)
+
+},10000)
+
+/* Show next page button 10 seconds after character appears */
+
+setTimeout(()=>{
+
+document.getElementById("nextPage").classList.add("show")
+
+},19000)
+
+/* Command function */
+
+function doCommand(img,type){
+
+let char=document.getElementById("character")
+let bubble=document.getElementById("bubble")
+let text=document.getElementById("bubbleText")
+
+char.style.opacity=0
+
+setTimeout(()=>{
+char.src=img+"?v="+new Date().getTime()
+char.style.opacity=1
+},200)
+
+if(type==="bark"){
+text.innerHTML="woof<br>woof"
+}
+else{
+text.innerHTML="Yes Mistress D"
+}
+
+bubble.style.opacity=1
+
+setTimeout(()=>{
+bubble.style.opacity=0
+},1000)
+
+}
+
+/* Next page */
+
+function goNext(){
+window.location.href="nextpage.html"
+}
+
+</script>
+
+</body>
+</html>

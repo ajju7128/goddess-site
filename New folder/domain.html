@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Domain</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Georgia, serif;
+background:url("background.jpg") no-repeat center 25% / cover;
+min-height:100vh;
+}
+
+/* FIRST MESSAGE */
+
+.msg1{
+position:absolute;
+top:40%;
+width:100%;
+text-align:center;
+font-size:32px;
+color:white;
+opacity:0;
+animation:msg1 6s forwards;
+}
+
+/* SECOND MESSAGE */
+
+.msg2{
+position:absolute;
+top:40%;
+width:100%;
+text-align:center;
+font-size:70px;
+font-family:'Great Vibes',cursive;
+color:white;
+opacity:0;
+animation:msg2 6s forwards;
+animation-delay:6s;
+}
+
+/* I WILL TEXT */
+
+.topText{
+position:absolute;
+top:5%;
+width:100%;
+text-align:center;
+font-size:60px;
+letter-spacing:8px;
+color:white;
+opacity:0;
+animation:iwill 2s forwards;
+animation-delay:12s;
+}
+
+/* SCROLL AREA */
+
+.scroll-container{
+
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:70px;
+padding:140px;
+margin-top:150px;
+
+opacity:0;
+animation:showScrolls 1.5s forwards;
+animation-delay:14s;
+
+}
+
+/* SCROLL */
+
+.scroll{
+
+background-image:url("scroll.png");
+background-size:contain;
+background-repeat:no-repeat;
+background-position:center;
+
+width:180px;
+height:100px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+cursor:pointer;
+transition:0.4s;
+margin:auto;
+
+}
+
+.scroll:hover{
+transform:scale(1.1);
+}
+
+/* OPEN SCROLL */
+
+.scroll.active{
+width:420px;
+height:320px;
+}
+
+/* SCROLL TEXT */
+
+.scroll-text{
+
+display:none;
+width:200px;
+
+text-align:center;
+
+font-size:16px;
+line-height:1.6;
+
+color:#3b2a1a;
+
+margin-top:30px;
+word-wrap:break-word;
+
+}
+
+.scroll.active .scroll-text{
+display:block;
+animation:textFade 0.7s;
+}
+
+/* NEXT BUTTON SECTION */
+
+.next-section{
+text-align:center;
+margin:120px 0;
+position:relative;
+
+opacity:0;
+animation:showButton 1s forwards;
+animation-delay:16s;
+}
+
+#slapButton{
+
+padding:18px 40px;
+font-size:18px;
+
+background:#8b0000;
+color:white;
+
+border:none;
+border-radius:10px;
+
+cursor:pointer;
+box-shadow:0 0 15px black;
+
+transition:0.3s;
+
+}
+
+#slapButton:hover{
+transform:scale(1.08);
+}
+
+/* HAND */
+
+#slap{
+
+position:absolute;
+left:50%;
+top:-20px;
+
+font-size:40px;
+
+opacity:0;
+
+transform:translateX(-50%) rotate(-30deg);
+
+}
+
+.slapAnim{
+animation:slapMove 0.6s forwards;
+}
+
+/* CHAT BUBBLE */
+
+.bubble{
+
+position:absolute;
+left:50%;
+top:-60px;
+
+transform:translateX(-50%);
+
+background:white;
+color:black;
+
+padding:10px 16px;
+
+border-radius:20px;
+
+font-size:16px;
+
+opacity:0;
+
+}
+
+.bubble.show{
+animation:bubbleShow 3s forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes msg1{
+
+0%{opacity:0;}
+20%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;}
+
+}
+
+@keyframes msg2{
+
+0%{opacity:0;}
+20%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;}
+
+}
+
+@keyframes iwill{
+
+from{opacity:0;}
+to{opacity:1;}
+
+}
+
+@keyframes showScrolls{
+
+from{opacity:0;}
+to{opacity:1;}
+
+}
+
+@keyframes showButton{
+
+from{opacity:0;}
+to{opacity:1;}
+
+}
+
+@keyframes textFade{
+
+from{opacity:0;}
+to{opacity:1;}
+
+}
+
+@keyframes slapMove{
+
+0%{
+opacity:0;
+transform:translateX(-50%) translateY(-30px) rotate(-40deg);
+}
+
+40%{
+opacity:1;
+transform:translateX(-50%) translateY(10px) rotate(0deg);
+}
+
+80%{
+opacity:1;
+transform:translateX(-50%) translateY(0px) rotate(10deg);
+}
+
+100%{
+opacity:0;
+transform:translateX(-50%) translateY(-10px);
+}
+
+}
+
+@keyframes bubbleShow{
+
+0%{opacity:0;}
+20%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="msg1">
+i know you're weighing whether or not to keep me..
+</div>
+
+<div class="msg2">
+but i'll still yearn for you
+</div>
+
+<div class="topText">I WILL..</div>
+
+<div class="scroll-container" id="scrollContainer"></div>
+
+
+<div class="next-section">
+
+<button id="slapButton" onclick="grantPermission()">
+Slap to grant me the permission to go to the next page
+</button>
+
+<div id="slap">✋</div>
+
+<div id="bubble" class="bubble">
+thankyou Mistress D 😋
+</div>
+
+</div>
+
+
+<script>
+
+const texts=[
+
+"Kiss Your boots on command.",
+"Always address You as Mistress.",
+"Maintain total mental transparency.",
+"React at the snap of Your fingers.",
+"Keep my gaze lowered.",
+"Surrender my mind to You.",
+"Move with speed for Your comfort.",
+"Worship Your feet like a puppy.",
+"Yield my will to Yours.",
+"Answer with 'Yes, Mistress.'",
+
+"Worship You in any way You demand.",
+"Ensure my 'No' does not exist.",
+"Be Your silent, loyal shadow.",
+"Find peace in Your control.",
+"Anticipate Your every need.",
+"Follow wherever You lead.",
+"Obey without asking 'Why.'",
+"Make Your happiness my goal.",
+"Serve as Your living footstool.",
+"Listen with total focus.",
+
+"Sacrifice all for Your whim.",
+"Accept discipline with gratitude.",
+"Massage Your feet nightly.",
+"Remain Your forever devoted slave.",
+"Forget my own needs.",
+"Maintain silence by default.",
+"Be the tool You require.",
+"Breathe only for Your pleasure.",
+"Treat my thoughts as Your property.",
+"Kneel whenever You enter.",
+
+"Honor the name Mistress D.",
+"Polish Your heels to a shine.",
+"Seek only Your approval.",
+"Execute orders without delay.",
+"Suppress all selfish thoughts.",
+"Live to honor Your name.",
+"Adore the ground You walk on.",
+"Remember the privilege of service.",
+"View Your presence as my reward.",
+"Make Your command my motivation.",
+
+"Endure every challenge You set."
+
+];
+
+const container=document.getElementById("scrollContainer");
+
+texts.forEach(text=>{
+
+let scroll=document.createElement("div");
+scroll.className="scroll";
+
+let content=document.createElement("div");
+content.className="scroll-text";
+content.innerText=text;
+
+scroll.appendChild(content);
+
+scroll.onclick=function(){
+
+document.querySelectorAll(".scroll").forEach(s=>{
+s.classList.remove("active");
+});
+
+scroll.classList.add("active");
+
+};
+
+container.appendChild(scroll);
+
+});
+
+
+function grantPermission(){
+
+const slap=document.getElementById("slap");
+const bubble=document.getElementById("bubble");
+
+slap.classList.remove("slapAnim");
+void slap.offsetWidth;
+slap.classList.add("slapAnim");
+
+bubble.classList.add("show");
+
+setTimeout(function(){
+
+window.location.href="commands.html";
+
+},3500);
+
+}
+
+</script>
+
+</body>
+
+</html>
