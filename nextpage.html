@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Your Answer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+
+margin:0;
+height:100vh;
+
+background:url("crimson.jpg") center/cover no-repeat;
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+justify-content:center;
+
+font-family:Georgia, serif;
+color:white;
+text-align:center;
+
+overflow:hidden;
+
+}
+
+/* Question */
+
+#question{
+
+max-width:900px;
+
+font-size:32px;
+line-height:1.5;
+
+opacity:0;
+
+animation:fadeIn 3s forwards;
+
+}
+
+/* Buttons container */
+
+.buttons{
+
+margin-top:50px;
+
+opacity:0;
+
+animation:fadeButtons 2s forwards;
+animation-delay:4s;
+
+}
+
+/* Buttons style (both same) */
+
+button{
+
+font-size:22px;
+padding:12px 30px;
+
+margin:20px;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+background:#5a0000;
+
+color:white;
+
+font-family:Georgia, serif;
+
+}
+
+/* NO button still movable */
+
+#no{
+
+position:absolute;
+
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+
+from{opacity:0}
+to{opacity:1}
+
+}
+
+@keyframes fadeButtons{
+
+from{opacity:0}
+to{opacity:1}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="question">
+
+Mistress D, I don’t know if this will be long or short-term, or if I’ll be the best you’ve ever had, but for now, will you accept me as your faithful, loyal, and obedient submissive?
+
+</div>
+
+<div class="buttons">
+
+<button id="yes" onclick="accepted()">YES</button>
+
+<button id="no">NO</button>
+
+</div>
+
+<script>
+
+/* YES click */
+
+function accepted(){
+
+alert("Thank you, Mistress D ❤️")
+
+}
+
+/* NO button runs away */
+
+let noButton=document.getElementById("no")
+
+document.addEventListener("mousemove",function(e){
+
+let rect=noButton.getBoundingClientRect()
+
+let dx=e.clientX-(rect.left+rect.width/2)
+let dy=e.clientY-(rect.top+rect.height/2)
+
+let distance=Math.sqrt(dx*dx+dy*dy)
+
+if(distance<120){
+
+let newX=Math.random()*(window.innerWidth-100)
+let newY=Math.random()*(window.innerHeight-50)
+
+noButton.style.left=newX+"px"
+noButton.style.top=newY+"px"
+
+}
+
+})
+
+</script>
+
+</body>
+
+</html>

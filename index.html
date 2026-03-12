@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: radial-gradient(circle at center, #8B0000, #2b0000);
+    font-family: "Georgia", serif;
+    color:white;
+    text-align:center;
+}
+
+/* Quote at top */
+
+.quote{
+    position:absolute;
+    top:40px;
+    width:100%;
+    font-size:26px;
+    font-style:italic;
+    opacity:0;
+    animation: fadeInQuote 3s ease forwards;
+}
+
+.quote-author{
+    margin-top:10px;
+    font-size:22px;
+    letter-spacing:2px;
+    color:gold;
+}
+
+/* Main container */
+
+.container{
+    max-width:700px;
+    padding:20px;
+}
+
+.message{
+    font-size:28px;
+    line-height:1.6;
+    opacity:0;
+    animation: fadeIn 4s ease forwards;
+}
+
+.name{
+    margin-top:40px;
+    font-size:42px;
+    letter-spacing:4px;
+    color:#ff4d4d;
+    opacity:0;
+    animation: fadeIn 3s ease forwards;
+    animation-delay:4s;
+}
+
+.enter-button{
+    margin-top:50px;
+    opacity:0;
+    animation: fadeIn 3s ease forwards;
+    animation-delay:7s;
+}
+
+.enter-button a{
+    text-decoration:none;
+    padding:15px 40px;
+    font-size:20px;
+    letter-spacing:3px;
+    border:2px solid gold;
+    color:gold;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.enter-button a:hover{
+    background:gold;
+    color:#2b0000;
+    box-shadow:0 0 15px gold;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInQuote{
+    from{
+        opacity:0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quote">
+“I will allow you to serve me if you earn it”
+<div class="quote-author">— Goddess D</div>
+</div>
+
+<div class="container">
+
+<div class="message">
+“This is my official try to earn that position😛..”
+</div>
+
+<div class="name">
+Goddess D
+</div>
+
+<div class="enter-button">
+<a href="domain.html">APPROACH THE THRONE, QUEEN</a>
+</div>
+
+</div>
+
+</body>
+</html>
